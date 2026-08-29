@@ -23,7 +23,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300 bg-white/60 dark:bg-dark-bg/60 backdrop-blur-md">
+   <header className="fixed top-0 w-full z-50 shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300 bg-white/60 dark:bg-dark-bg/60 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         
         {/* Left: Logo Area (Now using an Image) */}
