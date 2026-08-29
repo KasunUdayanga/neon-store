@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image'; // <-- Add this line!
+import Image from 'next/image'; 
 import { FaYelp, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 
@@ -19,6 +19,8 @@ export default function Footer() {
                 alt="Neon Sign Creator Logo" 
                 fill
                 className="object-contain"
+                sizes="128px" 
+                priority
               />
             </div>
             
@@ -41,6 +43,11 @@ export default function Footer() {
             <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Neon Signs for Business</Link>
             <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Wedding Neon Signs</Link>
             <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Birthday Neon Signs</Link>
+            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Father’s Day Neon Signs</Link>
+            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Mother’s Day Neon Signs</Link>
+            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Bar & Bat Mitzvah Signs</Link>
+            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Extreme Neon Signs</Link>
+            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Divorce Neon Signs</Link>
           </div>
 
           {/* Column 4: Policies */}
@@ -50,6 +57,9 @@ export default function Footer() {
             <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Contact Us</Link>
             <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Shipping Policy</Link>
             <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Privacy Policy</Link>
+            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Terms and Conditions</Link>
+            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Refund & Cancellation Policy</Link>
+            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Warranty</Link>
           </div>
         </div>
 

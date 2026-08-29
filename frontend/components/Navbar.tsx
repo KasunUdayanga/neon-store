@@ -36,7 +36,8 @@ export default function Navbar() {
                 alt="Neon Sign Creator Logo" 
                 fill
                 className="object-contain"
-                priority // Loads the logo instantly
+                priority
+                sizes="64px" 
               />
             </div>
           </Link>
