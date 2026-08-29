@@ -32,7 +32,7 @@ export default function Navbar() {
             {/* Update the src="" below to match your actual image file name */}
             <div className="relative w-16 h-16">
               <Image 
-                src="/logo.png" 
+                src="/image/logo.PNG" 
                 alt="Neon Sign Creator Logo" 
                 fill
                 className="object-contain"

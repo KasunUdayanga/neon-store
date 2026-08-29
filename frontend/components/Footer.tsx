@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image'; // <-- Add this line!
 import { FaYelp, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 
@@ -8,11 +9,19 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           
-          {/* Column 1: Brand */}
+{/* Column 1: Brand */}
           <div className="flex flex-col gap-4">
-            <div className="w-32 h-32 bg-black rounded-full border-2 border-cyan-400 flex items-center justify-center text-sm font-bold text-center leading-tight">
-              <span className="text-white">NEON<br/>SIGN<br/></span><span className="text-neon-pink">CREATOR</span>
+            
+            {/* Replaced text bubble with Image */}
+            <div className="relative w-32 h-32">
+              <Image 
+                src="/image/footerlogo.PNG" /* Ensure this matches the path you used in Navbar */
+                alt="Neon Sign Creator Logo" 
+                fill
+                className="object-contain"
+              />
             </div>
+            
             <p className="text-gray-500 dark:text-gray-400 italic text-sm mt-4">
               Bring your vision to life<br/>with custom LED neon<br/>signs.
             </p>
