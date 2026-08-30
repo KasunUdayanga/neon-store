@@ -53,13 +53,13 @@ export default function Footer() {
           {/* Column 4: Policies */}
           <div className="flex flex-col gap-3">
             <h3 className="font-bold text-lg font-serif mb-2">Policies & More</h3>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">About Us</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Contact Us</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Shipping Policy</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Privacy Policy</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Terms and Conditions</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Refund & Cancellation Policy</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Warranty</Link>
+            <Link href="/policies/about" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">About Us</Link>
+            <Link href="/policies/contactus" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Contact Us</Link>
+            <Link href="/policies/shipping" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Shipping Policy</Link>
+            <Link href="/policies/privacy" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Privacy Policy</Link>
+            <Link href="/policies/conditions" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Terms and Conditions</Link>
+            <Link href="/policies/refund" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Refund & Cancellation Policy</Link>
+            <Link href="/policies/warranty" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Warranty</Link>
           </div>
         </div>
 
