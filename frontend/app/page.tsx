@@ -8,7 +8,6 @@ import { motion } from "framer-motion"; // Import the animation library
 
 export default function Home() {
   const testimonials = [
-    // ... (Keep your existing testimonials array here)
     {
       id: 1,
       text: "We've ordered from Neonsigncreator multiple times, and it's always a pleasure to work with them. We're obsessed with all the neons we've received and can't wait to order more. They're top-notch quality, and everyone can't stop complimenting them. Highly recommended to all my friends.",
@@ -33,7 +32,7 @@ export default function Home() {
   ];
 
   const showcaseImages = [
-    // ... (Keep your existing showcaseImages array here)
+
     {
       id: 1,
       src: "/wall/Bar-Bat-Mitzvah-piclumen-1769592902465.webp",
@@ -51,7 +50,7 @@ export default function Home() {
     },
   ];
 
-  // Reusable animation configuration
+
   const fadeUpVariant = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -68,7 +67,7 @@ export default function Home() {
 
       <main className="flex-grow pt-28 pb-24 z-10">
 
-        {/* Intro Section - Animated */}
+{/* Intro Section - Animated with Moving Neon Background */}
         <motion.section 
           initial="hidden"
           whileInView="visible"
@@ -76,6 +75,30 @@ export default function Home() {
           variants={fadeUpVariant}
           className="py-24 px-6 max-w-5xl mx-auto text-center relative z-10"
         >
+          
+          {/* --- NEW: Moving Neon Background --- */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+            {/* Pink Orb */}
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.2, 1],
+                x: [0, 60, 0],
+                y: [0, -40, 0]
+              }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-neon-pink/20 dark:bg-neon-pink/30 rounded-full blur-[90px] md:blur-[120px]"
+            />
+            {/* Purple Orb */}
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.3, 1],
+                x: [0, -60, 0],
+                y: [0, 50, 0]
+              }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute w-[300px] md:w-[450px] h-[300px] md:h-[450px] bg-purple-500/20 dark:bg-purple-600/30 rounded-full blur-[100px] md:blur-[130px]"
+            />
+          </div>
 
           <h1 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight text-gray-900 dark:text-white transition-colors duration-300">
             Crafting Your <br className="hidden md:block" />
@@ -97,8 +120,6 @@ export default function Home() {
             </Link>
           </div>
         </motion.section>
-
-        {/* Showcase Grid Section - Animated */}
         <motion.section 
           initial="hidden"
           whileInView="visible"
@@ -106,7 +127,7 @@ export default function Home() {
           variants={fadeUpVariant}
           className="py-16 px-6 max-w-7xl mx-auto relative"
         >
-          {/* ... (Keep your existing Showcase Grid content exactly the same) ... */}
+   
           <h2 className="text-center text-3xl md:text-4xl font-bold mb-12 text-purple-600 dark:text-purple-200 uppercase tracking-wider transition-all duration-300 dark:[text-shadow:0_0_10px_#a855f7,0_0_20px_#a855f7,0_0_40px_#a855f7]">
             Some of the neons we did
           </h2>
