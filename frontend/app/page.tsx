@@ -1,10 +1,11 @@
-"use client"; // Required for Framer Motion
+"use client"; 
 
 import Navbar from "../components/Navbar";
 import Link from 'next/link';
 import Footer from "../components/Footer";
 import Image from "next/image";
-import { motion } from "framer-motion"; // Import the animation library
+// 1. Import Variants here
+import { motion, Variants } from "framer-motion"; 
 
 export default function Home() {
   const testimonials = [
@@ -32,7 +33,6 @@ export default function Home() {
   ];
 
   const showcaseImages = [
-
     {
       id: 1,
       src: "/wall/Bar-Bat-Mitzvah-piclumen-1769592902465.webp",
@@ -50,8 +50,8 @@ export default function Home() {
     },
   ];
 
-
-  const fadeUpVariant = {
+  // 2. Explicitly type the object as Variants
+  const fadeUpVariant: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
@@ -67,7 +67,7 @@ export default function Home() {
 
       <main className="flex-grow pt-28 pb-24 z-10">
 
-{/* Intro Section - Animated with Moving Neon Background */}
+        {/* Intro Section - Animated with Moving Neon Background */}
         <motion.section 
           initial="hidden"
           whileInView="visible"
@@ -150,7 +150,6 @@ export default function Home() {
           variants={fadeUpVariant}
           className="py-24 px-6 max-w-7xl mx-auto mt-8 relative"
         >
-          {/* ... (Keep your existing Testimonials content exactly the same) ... */}
           <h2 className="text-center text-3xl md:text-4xl font-bold mb-16 text-neon-pink dark:text-pink-100 uppercase tracking-wider transition-all duration-300 dark:[text-shadow:0_0_10px_#FF1493,0_0_20px_#FF1493,0_0_40px_#FF1493]">
             What customers say about us
           </h2>
