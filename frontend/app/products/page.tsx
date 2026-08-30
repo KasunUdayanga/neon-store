@@ -4,14 +4,13 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useCart } from "../../context/CartContext"; // 1. Import the Cart Context
+// 1. Added Variants to the import
+import { motion, Variants } from "framer-motion"; 
+import { useCart } from "../../context/CartContext";
 
 export default function ProductsPage() {
-  // 2. Initialize the cart hook
   const { addToCart } = useCart();
 
-  // Dummy product data
   const products = [
     {
       id: 1,
@@ -57,7 +56,8 @@ export default function ProductsPage() {
     },
   ];
 
-  const containerVariants = {
+  // 2. Explicitly typed as Variants
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -67,7 +67,8 @@ export default function ProductsPage() {
     },
   };
 
-  const cardVariants = {
+  // 3. Explicitly typed as Variants
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
@@ -144,10 +145,9 @@ export default function ProductsPage() {
                   ${product.price.toFixed(2)}
                 </p>
 
-                {/* 3. Updated Add to Cart Button */}
                 <button 
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevents clicking the button from triggering any parent div clicks
+                    e.stopPropagation(); 
                     addToCart({
                       name: product.name,
                       price: product.price,
