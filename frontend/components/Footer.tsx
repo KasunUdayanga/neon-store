@@ -40,14 +40,13 @@ export default function Footer() {
           {/* Column 3: Collections */}
           <div className="flex flex-col gap-3">
             <h3 className="font-bold text-lg font-serif mb-2">Collections</h3>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Neon Signs for Business</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Wedding Neon Signs</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Birthday Neon Signs</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Father’s Day Neon Signs</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Mother’s Day Neon Signs</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Bar & Bat Mitzvah Signs</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Extreme Neon Signs</Link>
-            <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Divorce Neon Signs</Link>
+            <Link href="/collections/wedding" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Wedding Neon Signs</Link>
+            <Link href="/collections/birthday" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Birthday Neon Signs</Link>
+            <Link href="/collections/fathers-day" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Father’s Day Neon Signs</Link>
+            <Link href="/collections/mothers-day" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Mother’s Day Neon Signs</Link>
+            <Link href="/collections/bar-bat-mitzvah" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Bar & Bat Mitzvah Signs</Link>
+            <Link href="/collections/extreme" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Extreme Neon Signs</Link>
+            <Link href="/collections/divorce" className="text-gray-600 dark:text-gray-400 hover:text-neon-pink dark:hover:text-neon-pink text-sm transition">Divorce Neon Signs</Link>
           </div>
 
           {/* Column 4: Policies */}
