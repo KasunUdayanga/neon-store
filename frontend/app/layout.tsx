@@ -1,9 +1,10 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Monoton } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
-import { CartProvider } from "../context/CartContext"; 
-import Cart from "../components/Cart"; 
+import { CartProvider } from "../context/CartContext";
+import Cart from "../components/Cart";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,14 +35,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${geistSans.variable} ${geistMono.variable} ${monoton.variable} antialiased min-h-full flex flex-col transition-colors duration-300 dark:bg-dark-bg dark:text-white`} 
         suppressHydrationWarning
       >
-        {/* Wrap the app in the CartProvider */}
-        <CartProvider>
+        <ClerkProvider>
+          {/* Wrap the app in the CartProvider */}
+          <CartProvider>
           <ThemeProvider>
-            {children}
-            {/* Place the Cart component here so it appears on every page */}
-            <Cart />
+          {children}
+          {/* Place the Cart component here so it appears on every page */}
+          <Cart />
           </ThemeProvider>
-        </CartProvider>
+          </CartProvider>
+        </ClerkProvider>
       </body>
     </html>
   );
