@@ -183,7 +183,7 @@ export default function CheckoutPage() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const subtotal = Number(cartTotal ?? 0);
-  const shippingFee = 0;
+  const shippingFee: number = 0;
   const total = Number((subtotal + shippingFee).toFixed(2));
 
   const handleShippingChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -823,12 +823,14 @@ export default function CheckoutPage() {
                   <span>Subtotal</span>
                   <span>${subtotal.toFixed(2)}</span>
                 </div>
+
                 <div className="flex items-center justify-between">
                   <span>Shipping</span>
                   <span>
                     {shippingFee === 0 ? "Free" : `$${shippingFee.toFixed(2)}`}
                   </span>
                 </div>
+
                 <div className="flex items-center justify-between border-t border-gray-100 pt-3 text-base font-bold text-gray-900 dark:border-zinc-800 dark:text-white">
                   <span>Total</span>
                   <span>${total.toFixed(2)}</span>
