@@ -9,6 +9,8 @@ import { useCart } from "../context/CartContext";
 import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 import { ShoppingBag, User, Menu, Sun, Moon, X } from "lucide-react"; // Imported 'X' for the close icon
 
+const shopRoutes = ["/products", "/create", "/upload"];
+
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -16,6 +18,13 @@ export default function Navbar() {
 
   const { cartCount, cartTotal, setIsCartOpen } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const shouldShowCart =
+    pathname === "/" ||
+    shopRoutes.includes(pathname) ||
+    pathname.startsWith("/products") ||
+    pathname.startsWith("/create") ||
+    pathname.startsWith("/upload");
 
   useEffect(() => setMounted(true), []);
 
@@ -99,25 +108,29 @@ export default function Navbar() {
             </button>
           )}
 
-          {/* Live Cart Price (Hidden on tiny screens) */}
-          <span className="hidden sm:block text-sm md:text-base">
-            ${cartTotal.toFixed(2)}
-          </span>
+          {shouldShowCart && (
+            <>
+              {/* Live Cart Price (Hidden on tiny screens) */}
+              <span className="hidden sm:block text-sm md:text-base">
+                ${cartTotal.toFixed(2)}
+              </span>
 
-          {/* Live Cart Icon */}
-          <div
-            onClick={() => setIsCartOpen(true)}
-            className="relative cursor-pointer text-gray-800 dark:text-white hover:text-neon-pink transition-transform hover:scale-110 flex items-center justify-center p-1"
-          >
-            <ShoppingBag
-              size={24}
-              strokeWidth={2.5}
-              className="md:w-6 md:h-6"
-            />
-            <span className="absolute -top-1 -right-2 bg-neon-pink text-white text-[10px] md:text-xs font-bold rounded-full h-4 w-4 md:h-5 md:w-5 flex items-center justify-center border-2 border-white dark:border-dark-bg shadow-sm">
-              {cartCount}
-            </span>
-          </div>
+              {/* Live Cart Icon */}
+              <div
+                onClick={() => setIsCartOpen(true)}
+                className="relative cursor-pointer text-gray-800 dark:text-white hover:text-neon-pink transition-transform hover:scale-110 flex items-center justify-center p-1"
+              >
+                <ShoppingBag
+                  size={24}
+                  strokeWidth={2.5}
+                  className="md:w-6 md:h-6"
+                />
+                <span className="absolute -top-1 -right-2 bg-neon-pink text-white text-[10px] md:text-xs font-bold rounded-full h-4 w-4 md:h-5 md:w-5 flex items-center justify-center border-2 border-white dark:border-dark-bg shadow-sm">
+                  {cartCount}
+                </span>
+              </div>
+            </>
+          )}
 
           {/* Clerk Authentication */}
           <div className="hidden sm:flex items-center justify-center p-1">
