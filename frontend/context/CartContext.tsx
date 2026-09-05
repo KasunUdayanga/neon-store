@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useMemo, useState, ReactNode } from "react";
 
 type CartItem = {
   id: string;
@@ -15,6 +15,7 @@ type CartContextType = {
   addToCart: (item: Omit<CartItem, "id" | "quantity">) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, newQuantity: number) => void;
+  clearCart: () => void;
   cartCount: number;
   cartTotal: number;
   isCartOpen: boolean;
@@ -23,14 +24,17 @@ type CartContextType = {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export function CartProvider({ children }: { children: ReactNode }) {
+export function CartProvider({ children }: Readonly<{ children: ReactNode }>) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const addToCart = (item: Omit<CartItem, "id" | "quantity">) => {
     // Automatically set quantity to 1 when a new item is added
-    setItems((prev) => [...prev, { ...item, id: Date.now().toString(), quantity: 1 }]);
-    setIsCartOpen(true); 
+    setItems((prev) => [
+      ...prev,
+      { ...item, id: Date.now().toString(), quantity: 1 },
+    ]);
+    setIsCartOpen(true);
   };
 
   const removeFromCart = (id: string) => {
@@ -40,30 +44,39 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const updateQuantity = (id: string, newQuantity: number) => {
     if (newQuantity < 1) return; // Prevent quantity from going below 1
     setItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity: newQuantity } : item))
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      )
     );
+  };
+
+  const clearCart = () => {
+    setItems([]);
   };
 
   // Calculate totals based on quantity
   const cartCount = items.reduce((total, item) => total + item.quantity, 0);
-  const cartTotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
-
-  return (
-    <CartContext.Provider 
-      value={{ 
-        items, 
-        addToCart, 
-        removeFromCart, 
-        updateQuantity, 
-        cartCount, 
-        cartTotal, 
-        isCartOpen, 
-        setIsCartOpen 
-      }}
-    >
-      {children}
-    </CartContext.Provider>
+  const cartTotal = items.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
   );
+
+  const value = useMemo(
+    () => ({
+      items,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+      clearCart,
+      cartCount,
+      cartTotal,
+      isCartOpen,
+      setIsCartOpen,
+    }),
+    [items, cartCount, cartTotal, isCartOpen]
+  );
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 export function useCart() {

@@ -32,8 +32,6 @@ app.use("/api", routes);
 app.use(notFound);
 app.use(errorHandler);
 
-connectDB();
-
 const startServer = (port) => {
   const server = app.listen(port, () => {
     console.log(`Backend server running on http://localhost:${port}`);
@@ -51,4 +49,14 @@ const startServer = (port) => {
   });
 };
 
-startServer(DEFAULT_PORT);
+const bootstrap = async () => {
+  try {
+    await connectDB();
+    startServer(DEFAULT_PORT);
+  } catch (error) {
+    console.error("Failed to start backend:", error.message);
+    process.exit(1);
+  }
+};
+
+bootstrap();

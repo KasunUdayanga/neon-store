@@ -1,10 +1,11 @@
 "use client";
 
+import { useAuth } from "@clerk/nextjs";
 import { useCart } from "../context/CartContext";
 import { ShoppingCart, ArrowRight, Trash2, Plus, Minus } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
-const shopRoutes = ["/products", "/create", "/upload"];
+const shopRoutes = new Set(["/products", "/create", "/upload"]);
 
 export default function Cart() {
   const pathname = usePathname();
@@ -18,10 +19,11 @@ export default function Cart() {
     updateQuantity,
   } = useCart();
   const router = useRouter();
+  const { isLoaded, isSignedIn, userId } = useAuth();
 
   const shouldShowCart =
     pathname === "/" ||
-    shopRoutes.includes(pathname) ||
+    shopRoutes.has(pathname) ||
     pathname.startsWith("/products") ||
     pathname.startsWith("/create") ||
     pathname.startsWith("/upload");
@@ -30,13 +32,23 @@ export default function Cart() {
     return null;
   }
 
-  const handleCheckoutClick = () => {
+  const handleCheckoutClick = async () => {
+    if (!isLoaded) {
+      return;
+    }
+
     if (cartCount === 0) {
       setIsCartOpen(false);
       router.push("/products");
-    } else {
-      console.log("Proceeding to checkout with items:", items);
+      return;
     }
+
+    if (!isSignedIn || !userId) {
+      router.push("/sign-in?redirect_url=/checkout");
+      return;
+    }
+
+    router.push("/checkout");
   };
 
   return (
@@ -56,7 +68,9 @@ export default function Cart() {
 
       {/* Cart Drawer */}
       {isCartOpen && (
-        <div
+        <button
+          type="button"
+          aria-label="Close cart overlay"
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] transition-opacity"
           onClick={() => setIsCartOpen(false)}
         />
@@ -87,7 +101,7 @@ export default function Cart() {
         <div className="flex-grow overflow-y-auto p-6 flex flex-col items-center justify-center">
           {cartCount === 0 ? (
             <p className="text-gray-500 dark:text-gray-400 text-lg font-medium text-center">
-              Check out our shop to see what's available
+              Check out our shop to see what&apos;s available
             </p>
           ) : (
             <div className="w-full space-y-6 flex-col flex justify-start h-full">

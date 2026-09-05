@@ -3,6 +3,12 @@ const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
   {
+    clerkUserId: {
+      type: String,
+      unique: true,
+      sparse: true,
+      index: true,
+    },
     name: {
       type: String,
       required: true,
@@ -17,8 +23,18 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: false,
       minlength: 6,
+    },
+    imageUrl: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    provider: {
+      type: String,
+      enum: ["local", "clerk"],
+      default: "local",
     },
     role: {
       type: String,
@@ -30,7 +46,7 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
+  if (!this.password || !this.isModified("password")) {
     return next();
   }
 

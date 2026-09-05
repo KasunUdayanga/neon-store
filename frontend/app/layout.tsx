@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Monoton } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { CartProvider } from "../context/CartContext";
+import ClerkUserSync from "../components/ClerkUserSync";
 import Cart from "../components/Cart";
 
 const geistSans = Geist({
@@ -24,25 +25,28 @@ const monoton = Monoton({
 });
 
 export const metadata: Metadata = {
-  title: "Neon Sign Creator", 
+  title: "Neon Sign Creator",
   description: "Custom LED neon signs",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning> 
-      <body 
-        className={`${geistSans.variable} ${geistMono.variable} ${monoton.variable} antialiased min-h-full flex flex-col transition-colors duration-300 dark:bg-dark-bg dark:text-white`} 
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${monoton.variable} antialiased min-h-full flex flex-col transition-colors duration-300 dark:bg-dark-bg dark:text-white`}
         suppressHydrationWarning
       >
         <ClerkProvider>
           {/* Wrap the app in the CartProvider */}
           <CartProvider>
-          <ThemeProvider>
-          {children}
-          {/* Place the Cart component here so it appears on every page */}
-          <Cart />
-          </ThemeProvider>
+            <ThemeProvider>
+              <ClerkUserSync />
+              {children}
+              {/* Place the Cart component here so it appears on every page */}
+              <Cart />
+            </ThemeProvider>
           </CartProvider>
         </ClerkProvider>
       </body>
