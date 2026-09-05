@@ -182,7 +182,7 @@ export default function CheckoutPage() {
   const [statusMessage, setStatusMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const subtotal = cartTotal;
+  const subtotal = Number(cartTotal ?? 0);
   const shippingFee = 0;
   const total = Number((subtotal + shippingFee).toFixed(2));
 
