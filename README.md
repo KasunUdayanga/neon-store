@@ -1,18 +1,32 @@
+## 🛒 Neon Store Live Demo
+
+🔗 **Live Site:** [frontend-six-theta-46.vercel.app](https://frontend-six-theta-46.vercel.app)
 
 ---
 
-## 🚀 How to Add This README to GitHub
+## ✨ Features
 
-### Option 1: Via GitHub Web Interface
-1. Go to your repo: `https://github.com/KasunUdayanga/neon-store`
-2. Click **"Add a README"** button (visible in your screenshot)
-3. Paste the content above
-4. Scroll down and click **"Commit new file"**
+### 🛍️ Customer Storefront
+- Browse products by category
+- Search products (English & Sinhala)
+- Bilingual support (EN / සිං)
+- Shopping cart with quantity management
+- Order placement with customer details
+- Real-time order tracking with visual status stepper
+- Responsive mobile-friendly design
+- Store open/closed status indicator
 
-### Option 2: Via Git Command Line
-```bash
-cd neon-store
-# Create README.md and paste content
-git add README.md
-git commit -m "Add README with live link"
-git push origin master
+### ⚙️ Admin Panel
+- Secure JWT-based login
+- Dashboard with statistics (products, orders, revenue)
+- Product management (CRUD + stock updates)
+- Category management (CRUD)
+- Order management with status workflow:
+  `Pending → Confirmed → Preparing → Ready → Completed`
+- Cancel orders (auto-restores stock)
+- Store settings (name, hours, address, phone)
+- Real-time pending order badge
+
+---
+
+
